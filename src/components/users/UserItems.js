@@ -1,6 +1,6 @@
 import React from 'react'
 
- const UserItems= ({user:{avatar_url,login,url}})=> {
+ const UserItems= ({user:{avatar_url,login,html_url}})=> {
     
     
         return (
@@ -8,7 +8,7 @@ import React from 'react'
                 <img src={avatar_url} className="round-img" alt="Profile" style={{width:'60px'}}/>
                 
             <h3>{login}</h3>
-            <a className="btn btn-dark btn-sm my-1" href={url}>More</a>
+            <a className="btn btn-dark btn-sm my-1" href={html_url}>More</a>
             </div>
         )
     
