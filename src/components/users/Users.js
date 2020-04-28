@@ -1,20 +1,24 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import UserItems from './UserItems'
 import Spinner from '../layouts/Spinner'
-const Users = (props)=> {
-    
+import GithubContext from '../../context/github/githubContext'
+
+const Users = ()=> {
+    const githubContext = useContext(GithubContext)
         const userStyle = {
             display:'grid',
             gridTemplateColumns:'repeat(3,1fr)',
             gridGap:'1rem'
-        }
+    }
+    
+    const { isLoading, users } = githubContext;
 
-        if (props.isLoading) {
+        if (isLoading) {
             return <Spinner/>
         } else {
             return (
                 <div style={userStyle}>
-                    {props.users.map(user=>(
+                    {users.map(user=>(
                         <UserItems user={user} key={user.id}/>
     
                     )

@@ -1,11 +1,10 @@
-import React, { Component,Fragment } from 'react'
+import React, {Fragment,useEffect } from 'react'
 import {Link} from 'react-router-dom'
-export default class User extends Component {
-    componentDidMount() {
-       
-        this.props.getUser(this.props.match.params.login)
-    }
-    render() {
+const User = ({ getUser,match,user}) => {
+    useEffect(() => {
+        getUser(match.params.login)
+    },[getUser, match.params.login])
+    
         const { hireable,
             avatar_url,
             name,
@@ -19,7 +18,7 @@ export default class User extends Component {
             following,
             public_repos,
             public_gists
-        } = this.props.user
+        } = user
         return (
             <Fragment>
                 <Link to="/" className="btn btn-light">Back to Search</Link>
@@ -68,5 +67,7 @@ export default class User extends Component {
                 </div>
             </Fragment>
         )
-    }
+    
 }
+
+export default User;
